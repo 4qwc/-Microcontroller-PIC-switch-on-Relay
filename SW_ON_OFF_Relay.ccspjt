@@ -1,0 +1,23 @@
+[PROJECT]
+Target=SW_ON_OFF_Relay.hex
+Processor_Text=PIC16F84A
+CCSVersion=5.015
+Compiler=PCM
+[Target Data]
+FileList=SW_ON_OFF_Relay.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\devices\;C:\Program Files (x86)\PICC\drivers\
+[SW_ON_OFF_Relay.c]
+Type=4
+[mru-list]
+1=SW_ON_OFF_Relay.c
+[Opened Files]
+1=SW_ON_OFF_Relay.c
+2=SW_ON_OFF_Relay.lst
+3=SW_ON_OFF_Relay.tre
+4=SW_ON_OFF_Relay.sym
+5=D:\1.‡√’¬πProgram CCS\‡√’¬πProgram CCS\MOTOR CON\MOTOR CON.c
+6=
+[Units]
+Count=1
+1=SW_ON_OFF_Relay (main)

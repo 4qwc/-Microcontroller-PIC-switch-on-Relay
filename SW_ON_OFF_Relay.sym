@@ -1,0 +1,50 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+005     RA
+005.0   SW1
+006     RB
+006.2   RL1
+009-00A @READ_PROGRAM_MEMORY8.P1
+00C     @SCRATCH
+00D     @SCRATCH
+00D     _RETURN_
+00E     @SCRATCH
+00F     @SCRATCH
+010.0   F_SW1
+011     @delay_ms1.P1
+
+ROM Allocation:
+000004  @delay_ms1
+000018  @cinit1
+000018  main
+00001B  @cinit2
+
+Project Directory:
+    C:\Users\Kannatham\Desktop\PIC CCS\RELAY_PROJECT\
+
+Project Files:
+    SW_ON_OFF_Relay.c                                       [27-Á.¤.-21 13:43  CRC=54379FAE]
+    ..\..\..\..\..\Program Files (x86)\PICC\devices\16f84a.h [12-¾.Â.-13 14:34  CRC=4E09ACDB]
+
+Source signature=F04AF964
+
+Units:
+    SW_ON_OFF_Relay (main)
+
+Compiler Settings:
+    Processor:      PIC16F84A
+    Pointer Size:   8
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   SW_ON_OFF_Relay.xsym
+    Errors:      SW_ON_OFF_Relay.err
+    Ext Symbols: SW_ON_OFF_Relay.esym
+    INHX8:       SW_ON_OFF_Relay.hex
+    Symbols:     SW_ON_OFF_Relay.sym
+    List:        SW_ON_OFF_Relay.lst
+    Debug/COFF:  SW_ON_OFF_Relay.cof
+    Project:     SW_ON_OFF_Relay.ccspjt
+    Call Tree:   SW_ON_OFF_Relay.tre
+    Statistics:  SW_ON_OFF_Relay.STA

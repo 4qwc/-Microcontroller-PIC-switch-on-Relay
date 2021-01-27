@@ -1,0 +1,123 @@
+CCS PCM C Compiler, Version 5.015, 5967               27-Á.¤.-21 13:43
+
+               Filename:   C:\Users\Kannatham\Desktop\PIC CCS\RELAY_PROJECT\SW_ON_OFF_Relay.lst
+
+               ROM used:   54 words (5%)
+                           Largest free fragment is 970
+               RAM used:   5 (7%) at main() level
+                           6 (9%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   018
+0003:  NOP
+.................... /* Progame SW1 ON RELAY1 
+.................... BY HS4QWC 27/1/2021  
+.................... YOUTUBE : 4Qchannal */  
+....................  
+.................... #include <16f84a.h> 
+.................... //////////// Standard Header file for the PIC16F84A device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F84A 
+....................  
+.................... #list 
+....................  
+.................... #fuses NOWDT,NOPROTECT,XT 
+.................... #use delay(clock=4000000)// 4 MHZ 
+0004:  MOVLW  11
+0005:  MOVWF  04
+0006:  MOVF   00,W
+0007:  BTFSC  03.2
+0008:  GOTO   017
+0009:  MOVLW  01
+000A:  MOVWF  0D
+000B:  CLRF   0C
+000C:  DECFSZ 0C,F
+000D:  GOTO   00C
+000E:  DECFSZ 0D,F
+000F:  GOTO   00B
+0010:  MOVLW  4A
+0011:  MOVWF  0C
+0012:  DECFSZ 0C,F
+0013:  GOTO   012
+0014:  GOTO   015
+0015:  DECFSZ 00,F
+0016:  GOTO   009
+0017:  RETURN
+.................... #use fast_io(a) 
+.................... #use fast_io(b) 
+....................  
+.................... #BYTE RA=5 
+.................... #BYTE RB=6 
+....................  
+.................... #BIT SW1=RA.0 // input SW1=Port_A0 
+.................... #BIT RL1=RB.2 // output RL1=Port-B2 
+....................  
+.................... short F_SW1;  // value F_SW1 /togle 
+....................  
+.................... void main() 
+0018:  MOVF   03,W
+0019:  ANDLW  1F
+001A:  MOVWF  03
+.................... { 
+....................    set_tris_a(0xff); // set input portA all 
+001B:  MOVLW  FF
+001C:  BSF    03.5
+001D:  MOVWF  05
+....................    set_tris_b(0x03); // set input port B0,B1=input 
+001E:  MOVLW  03
+001F:  MOVWF  06
+....................  
+....................    RL1 = 0; 
+0020:  BCF    03.5
+0021:  BCF    06.2
+....................       
+....................  while(TRUE) 
+....................     {    
+....................         if(!SW1 && !F_SW1)//-----------------//ch1 
+0022:  BTFSC  05.0
+0023:  GOTO   02C
+0024:  BTFSC  10.0
+0025:  GOTO   02C
+....................         { 
+....................           RL1 =~ RL1;  // togle  
+0026:  MOVLW  04
+0027:  XORWF  06,F
+....................           F_SW1 = 1; 
+0028:  BSF    10.0
+....................           delay_ms(10); 
+0029:  MOVLW  0A
+002A:  MOVWF  11
+002B:  CALL   004
+....................         }  
+....................         if(SW1 && F_SW1)   
+002C:  BTFSS  05.0
+002D:  GOTO   034
+002E:  BTFSS  10.0
+002F:  GOTO   034
+....................           { 
+....................             F_SW1 = 0; 
+0030:  BCF    10.0
+....................             delay_ms(10); 
+0031:  MOVLW  0A
+0032:  MOVWF  11
+0033:  CALL   004
+....................           }  
+0034:  GOTO   022
+....................     } //END while 
+.................... } // END MAIN 
+0035:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3FF1   XT NOWDT PUT NOPROTECT
